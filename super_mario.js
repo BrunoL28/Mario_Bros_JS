@@ -51,6 +51,14 @@ scene("game", () =>{
 
     const fase = addLevel(map, level_config)
 
+    const mario = ([
+        sprite('mario'), 
+        solid(), 
+        body(),
+        pos(60, 0),
+        origin('bot')
+    ])
+
 })
 
 go("game")
