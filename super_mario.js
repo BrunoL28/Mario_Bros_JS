@@ -96,7 +96,7 @@ scene("game", () =>{
         }
 
         if(object.is('cogumelo-surprise')){
-            fase.spawn('$', object.gridPos.sub(0, 1))
+            fase.spawn('#', object.gridPos.sub(0, 1))
             destroy(object)
             fase.spawn('}', object.gridPos.sub(0, 0))
         }
