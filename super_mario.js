@@ -19,7 +19,23 @@ loadSprite('cogumelo', '0wMd92p.png')
 scene("game", () =>{
     layer(["background", "object", "ui"], "object")
 
-    const map = []
+    const map = [
+        '=                                    =',
+        '=                                    =',
+        '=                                    =',
+        '=                                    =',
+        '=                                    =',
+        '=                                    =',
+        '=                                    =',
+        '=                                    =',
+        '=                                    =',
+        '=                                    =',
+        '=     %=        =*=%=                =',
+        '=                                    =',
+        '=                                    =',
+        '=          $$$$          ^   ^   ^   =',
+        '======================================',
+    ]
 
     const level_config = {
         width: 20,
