@@ -8,6 +8,13 @@ kaboom({
 loadRoot("https://i.imgur.com/")
 
 loadSprite('bloco', 'M6rwarW.png')
+loadSprite('goomba', 'KPO3fR9.png')
+loadSprite('surprise', 'gesQ1KP.png')
+loadSprite('openedsurprise', 'bdrLpi6.png')
+loadSprite('coin', 'wbKxhcd.png')
+loadSprite('mario', 'Wb1qfhK.png')
+loadSprite('cogumelo', '0wMd92p.png')
+
 
 scene("game", () =>{
     layer(["background", "object", "ui"], "object")
