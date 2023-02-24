@@ -24,7 +24,13 @@ scene("game", () =>{
     const level_config = {
         width: 20,
         height: 20,
-        '=': [sprite('bloco'), solid()]
+        '=': [sprite('bloco'), solid()],
+        '#': [sprite('cogumelo'), 'cogumelo', body()],
+        '}': [sprite('openedsurprise'), solid()],
+        '^': [sprite('goomba'), 'dangerous'],
+        '$': [sprite('coin'), 'coin'],
+        '%': [sprite('surprise'), solid(), 'coin-surprise'],
+        '*': [sprite('surprise'), solid(), 'cogumelo-surprise'],
     }
 
     const fase = addLevel(map, level_config)
