@@ -15,6 +15,8 @@ loadSprite('coin', 'wbKxhcd.png')
 loadSprite('mario', 'Wb1qfhK.png')
 loadSprite('cogumelo', '0wMd92p.png')
 
+let _jump = true
+let big = false
 
 scene("game", () =>{
     layer(["background", "object", "ui"], "object")
@@ -58,6 +60,23 @@ scene("game", () =>{
         pos(60, 0),
         origin('bot')
     ])
+
+    keyDown('left', () => {
+        mario.flipx(true)
+        mario.move(-120, 0)
+    })
+
+    keyDown('right', () => {
+        mario.flipx(false)
+        mario.move(120, 0)
+    }) 
+
+    keyPress('space', () => {
+        if(mario.grounded()){
+            mario.jump(390)
+            _jump = true
+        }
+    })
 
 })
 
