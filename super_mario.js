@@ -128,6 +128,18 @@ scene("game", () =>{
         mario.biggify()
     })
 
+    mario.collides('dangerous', (object) => {
+        if(_jump){
+            destroy(object)
+        }else{
+            if(_big){
+                mario.smallify()
+            }else{
+                go("lose")
+            }
+        }
+    })
+
 })
 
 go("game")
