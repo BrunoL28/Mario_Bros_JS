@@ -12,3 +12,5 @@ Para o desenvolvimento do jogo, será necessário a utilização das linguagens 
 [Site da biblioteca Kaboom.JS](https://kaboomjs.com/)
 
 [Vídeo que me instruiu ao longo do projeto](https://www.youtube.com/watch?v=CSGgEb7EBwc)
+
+[Referência para sprites e imagens](https://imgur.com/a/F8Jkryq)
