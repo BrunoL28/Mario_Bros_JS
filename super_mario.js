@@ -16,7 +16,7 @@ loadSprite('mario', 'Wb1qfhK.png')
 loadSprite('cogumelo', '0wMd92p.png')
 
 let _jump = true
-let big = false
+let _big = false
 
 scene("game", () =>{
     layer(["background", "object", "ui"], "object")
@@ -53,10 +53,27 @@ scene("game", () =>{
 
     const fase = addLevel(map, level_config)
 
+    function big(){
+        return{
+            isBig(){
+                return _big
+            },
+            smallify(){
+                this.scale = vec2(1)
+                _big = false
+            },
+            biggify(){
+                this.scale = vec2(1.5)
+                _big = true
+            },
+        }
+    }
+
     const mario = add([
         sprite('mario'), 
         solid(), 
         body(),
+        big(),
         pos(60, 0),
         origin('bot')
     ])
@@ -100,6 +117,15 @@ scene("game", () =>{
             destroy(object)
             fase.spawn('}', object.gridPos.sub(0, 0))
         }
+    })
+
+    action('cogumelo', (object) => {
+        object.move(20, 0)
+    })
+
+    mario.collides('cogumelo', (object) => {
+        destroy(object)
+        mario.biggify()
     })
 
 })
