@@ -78,6 +78,30 @@ scene("game", () =>{
         }
     })
 
+    action('dangerous', (object) => {
+        object.move(-20)
+    })
+
+    mario.action(() => {
+        if(mario.grounded()){
+            _jump = false
+        }
+    })
+
+    mario.on('headbutt', (object) => {
+        if(object.is('coin-surprise')){
+            fase.spawn('$', object.gridPos.sub(0, 1))
+            destroy(object)
+            fase.spawn('}', object.gridPos.sub(0, 0))
+        }
+
+        if(object.is('cogumelo-surprise')){
+            fase.spawn('$', object.gridPos.sub(0, 1))
+            destroy(object)
+            fase.spawn('}', object.gridPos.sub(0, 0))
+        }
+    })
+
 })
 
 go("game")
