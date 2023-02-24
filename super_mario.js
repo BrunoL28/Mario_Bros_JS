@@ -18,7 +18,7 @@ loadSprite('cogumelo', '0wMd92p.png')
 let _jump = true
 let _big = false
 
-scene("game", () =>{
+scene("game", ({ score }) =>{
     layer(["background", "object", "ui"], "object")
 
     const map = [
@@ -52,6 +52,15 @@ scene("game", () =>{
     }
 
     const fase = addLevel(map, level_config)
+
+    const scoreLabel = add([
+        text('Moedas: ' + score, 10),
+        pos(20, 5),
+        layer('ui'),
+        {
+            value: score
+        }
+    ])
 
     function big(){
         return{
@@ -135,11 +144,21 @@ scene("game", () =>{
             if(_big){
                 mario.smallify()
             }else{
-                go("lose")
+                go("lose", ({score: scoreLabel.value}))
             }
         }
     })
 
+    mario.collides('coin', (object) => {
+        destroy(object)
+        scoreLabel.value++
+        scoreLabel.text = 'Moedas: ' + scoreLabel.value
+    })
+
 })
 
-go("game")
+scene("lose", ({score}) => {
+    add([ text('Score: ' + score, 10), origin('center'), pos(width()/2, height()/2)])
+})
+
+go("game", ({score: 0}))
