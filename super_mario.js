@@ -53,7 +53,7 @@ scene("game", () =>{
 
     const fase = addLevel(map, level_config)
 
-    const mario = ([
+    const mario = add([
         sprite('mario'), 
         solid(), 
         body(),
@@ -62,12 +62,12 @@ scene("game", () =>{
     ])
 
     keyDown('left', () => {
-        mario.flipx(true)
+        mario.flipX(true)
         mario.move(-120, 0)
     })
 
     keyDown('right', () => {
-        mario.flipx(false)
+        mario.flipX(false)
         mario.move(120, 0)
     }) 
 
@@ -79,7 +79,7 @@ scene("game", () =>{
     })
 
     action('dangerous', (object) => {
-        object.move(-20)
+        object.move(-20, 0)
     })
 
     mario.action(() => {
