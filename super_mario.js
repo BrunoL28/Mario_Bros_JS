@@ -43,22 +43,44 @@ let _big = false
 scene("game", ({ score }) =>{
     layer(["background", "object", "ui"], "object")
 
-    const map = [
-        '=                                    =',
-        '=                                    =',
-        '=                                    =',
-        '=                                    =',
-        '=                                    =',
-        '=                                    =',
-        '=                                    =',
-        '=                                    =',
-        '=                                    =',
-        '=                                    =',
-        '=     %=        =*=%=                =',
-        '=                                    =',
-        '=                                    =',
-        '=          $$$$          ^   ^   ^   =',
-        '======================================',
+    const maps = [
+        [
+            '=                                    =',
+            '=                                    =',
+            '=                                    =',
+            '=                                    =',
+            '=                                    =',
+            '=                                    =',
+            '=                                    =',
+            '=                                    =',
+            '=                                    =',
+            '=                                    =',
+            '=     %=        =*=%=                =',
+            '=                                    =',
+            '=                                    =',
+            '=          $$$$          ^   ^   ^   =',
+            '======================================',
+        ],
+        [
+            '/                                     /',
+            '/                                     /',
+            '/        =%%===                       /',
+            '/                                     /',
+            '/                         x           /',
+            '/!!!!!!!!!!!!!!!!!!!!!!!!!!!!         /',
+            '/                                     /',
+            '/                                     /',
+            '/                                     /',
+            '/         !!!!!!!!!!!!!!!!!!!!!!!!!!!!/',
+            '/                                     /',
+            '/                                     /',
+            '/                                     /',
+            '/                  z z                /',
+            '/   %            z z z z              /',
+            '/              z z z z z z       ~(   /',
+            '/            z z z z z z z z     )-   /',
+            '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',
+        ],
     ]
 
     const level_config = {
@@ -82,7 +104,7 @@ scene("game", ({ score }) =>{
         'x': [sprite('blue-goomba'), body(), 'dangerous', scale(0.5)],
     }
 
-    const fase = addLevel(map, level_config)
+    const fase = addLevel(maps[], level_config)
 
     const scoreLabel = add([
         text('Moedas: ' + score, 10),
@@ -119,6 +141,9 @@ scene("game", ({ score }) =>{
         big(),
         pos(60, 0),
         origin('bot')
+        {
+            speed: 120
+        }
     ])
 
     keyDown('left', () => {
