@@ -130,6 +130,14 @@ scene("game", ({ score }) =>{
         mario.play('move')
     })
 
+    keyRelease('left', () => {
+        mario.play('idle')
+    })
+
+    keyRelease('right', () => {
+        mario.play('idle')
+    })
+
     action('dangerous', (object) => {
         object.move(-20, 0)
     })
