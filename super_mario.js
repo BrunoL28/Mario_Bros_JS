@@ -13,6 +13,16 @@ loadSprite('surprise', 'gesQ1KP.png')
 loadSprite('openedsurprise', 'bdrLpi6.png')
 loadSprite('coin', 'wbKxhcd.png')
 loadSprite('cogumelo', '0wMd92p.png')
+loadSprite('tubo-esquerdo', 'ReTPiWY.png')
+loadSprite('tubo-direito', 'hj2GK4n.png')
+loadSprite('tubo-direito', 'hj2GK4n.png')
+loadSprite('tubo-esquerdo-reverse', 'c1cYSbt.png')
+loadSprite('tubo-direito-reverse', 'nqQ79eI.png')
+loadSprite('brick', 'pogC9x5.png')
+loadSprite('blue-block', 'fVscIbn.png') 
+loadSprite('blue-brick', '3e5YRQd.png') 
+loadSprite('blue-steel', 'gqVoI2b.png') 
+loadSprite('blue-goomba', 'SvV4ueD.png')
 
 loadSprite('mario', 'OzrEnBy.png', {
     sliceX: 3.9,
