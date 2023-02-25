@@ -23,10 +23,10 @@ loadSprite('mario', 'OzrEnBy.png', {
         },
         move: {
             from: 1,
-            to: 2
-        }
-    }
-})
+            to: 2,
+        },
+    },
+});
 
 let _jump = true
 let _big = false
@@ -118,6 +118,16 @@ scene("game", ({ score }) =>{
             mario.jump(390)
             _jump = true
         }
+    })
+
+    keyPress('left', () => {
+        mario.flipX(true)
+        mario.play('move')
+    })
+
+    keyPress('right', () => {
+        mario.flipX(false)
+        mario.play('move')
     })
 
     action('dangerous', (object) => {
