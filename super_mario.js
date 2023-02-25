@@ -40,25 +40,41 @@ loadSprite('mario', 'OzrEnBy.png', {
 let _jump = true
 let _big = false
 
+scene("preview", () => {
+    add([text('Use the key arrows to move and space to jump', 10), origin('center'), pos(width()/2, height()/2 - 80)])
+    add([text('To go down the pipe, press the down arrow when you are on top of it', 10), origin('center'), pos(width()/2, height()/2 - 60)])
+    add([text('If you jump under a surprise box, they might drop a coin or a mushroom', 10), origin('center'), pos(width()/2, height()/2 - 40)])
+    add([text('The game has four levels and every coin', 10),  origin('center'), pos(width()/2, height()/2 - 20)])
+    add([text('You collect will increase your score by 1', 10),  origin('center'), pos(width()/2, height()/2)])
+    add([text('If you collect a mushroom, it increases you in size', 10),  origin('center'), pos(width()/2, height()/2 + 20)])
+    add([text('If you touch a goomba, when you are small, you die.', 10), origin('center'), pos(width()/2, height()/2 + 40)])
+    add([text('If you are big, go back to small size', 10), origin('center'), pos(width()/2, height()/2 + 60)])
+    add([text('Press P to start', 10), origin('center'), pos(width()/2, height()/2 + 80)])
+    add([text('GOOD GAME', 10), origin('center'), pos(width()/2, height()/2 + 100)])
+    keyPress('p', () => {
+        go("game", {level: 0, score: 0, big: _big})
+    })
+})
+
 scene("game", ({ level, score, big }) => {
     layer(["background", "object", "ui"], "object")
 
     const maps = [
         [
-            '=                                    =',
-            '=                                    =',
-            '=                                    =',
-            '=                                    =',
-            '=                                    =',
-            '=                                    =',
-            '=                                    =',
-            '=                                    =',
-            '=                                    =',
-            '=                                    =',
-            '=     %=        =*=%=                =',
-            '=                                    =',
-            '=                                    =',
-            '=          $$$$          ^   ^   ^   =',
+            '+                                    +',
+            '+                                    +',
+            '+                                    +',
+            '+                                    +',
+            '+                                    +',
+            '+                                    +',
+            '+                                    +',
+            '+                                    +',
+            '+                                    +',
+            '+                                    +',
+            '+     %=        =*=%=                +',
+            '+                                    +',
+            '+                                    +',
+            '+          $$$$          ^   ^   ^   +',
             '======================================',
         ],
         [
@@ -258,4 +274,4 @@ scene("lose", ({score}) => {
     })
 })
 
-go("game", ({level: 0, score: 0, big: _big}))
+go("preview")
