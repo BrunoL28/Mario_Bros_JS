@@ -40,7 +40,7 @@ loadSprite('mario', 'OzrEnBy.png', {
 let _jump = true
 let _big = false
 
-scene("game", ({ score }) =>{
+scene("game", ({ level, score, big }) => {
     layer(["background", "object", "ui"], "object")
 
     const maps = [
@@ -104,7 +104,7 @@ scene("game", ({ score }) =>{
         'x': [sprite('blue-goomba'), body(), 'dangerous', scale(0.5)],
     }
 
-    const fase = addLevel(maps[], level_config)
+    const fase = addLevel(maps[level], level_config)
 
     const scoreLabel = add([
         text('Moedas: ' + score, 10),
@@ -114,6 +114,8 @@ scene("game", ({ score }) =>{
             value: score
         }
     ])
+
+    add([text('Level: ' + parseInt(level + 1), 10), pos(12, 30)])
 
     function big(){
         return{
@@ -140,11 +142,15 @@ scene("game", ({ score }) =>{
         body(),
         big(),
         pos(60, 0),
-        origin('bot')
+        origin('bot'),
         {
             speed: 120
         }
     ])
+
+    if(_big){
+        mario.biggify()
+    }
 
     keyDown('left', () => {
         mario.flipX(true)
@@ -232,10 +238,24 @@ scene("game", ({ score }) =>{
         scoreLabel.text = 'Moedas: ' + scoreLabel.value
     })
 
+    mario.collides('tubo', () => {
+        keyPress('down', () => {
+            go("game", {
+                level: (level + 1) % maps.length,
+                score: scoreLabel.value,
+                big: _big
+            })
+        })
+    })
+
 })
 
 scene("lose", ({score}) => {
     add([ text('Score: ' + score, 10), origin('center'), pos(width()/2, height()/2)])
+    add([text('Press Space to return', 10), origin('center'), pos(width()/2, height()/2 + 20)])
+    keyPress('space', () => {
+        go("game", {level: 0, score: 0, big: _big})
+    })
 })
 
-go("game", ({score: 0}))
+go("game", ({level: 0, score: 0, big: _big}))
