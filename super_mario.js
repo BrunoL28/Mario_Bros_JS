@@ -12,8 +12,21 @@ loadSprite('goomba', 'KPO3fR9.png')
 loadSprite('surprise', 'gesQ1KP.png')
 loadSprite('openedsurprise', 'bdrLpi6.png')
 loadSprite('coin', 'wbKxhcd.png')
-loadSprite('mario', 'Wb1qfhK.png')
 loadSprite('cogumelo', '0wMd92p.png')
+
+loadSprite('mario', 'OzrEnBy.png', {
+    sliceX: 3.9,
+    anims: {
+        idle: {
+            from: 0,
+            to: 0,
+        },
+        move: {
+            from: 1,
+            to: 2
+        }
+    }
+})
 
 let _jump = true
 let _big = false
@@ -79,7 +92,10 @@ scene("game", ({ score }) =>{
     }
 
     const mario = add([
-        sprite('mario'), 
+        sprite('mario', {
+            animSpeed: 0.1,
+            frame: 0
+        }), 
         solid(), 
         body(),
         big(),
