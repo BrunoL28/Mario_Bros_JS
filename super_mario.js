@@ -15,7 +15,6 @@ loadSprite('coin', 'wbKxhcd.png')
 loadSprite('cogumelo', '0wMd92p.png')
 loadSprite('tubo-esquerdo', 'ReTPiWY.png')
 loadSprite('tubo-direito', 'hj2GK4n.png')
-loadSprite('tubo-direito', 'hj2GK4n.png')
 loadSprite('tubo-esquerdo-reverse', 'c1cYSbt.png')
 loadSprite('tubo-direito-reverse', 'nqQ79eI.png')
 loadSprite('brick', 'pogC9x5.png')
@@ -72,6 +71,15 @@ scene("game", ({ score }) =>{
         '$': [sprite('coin'), 'coin'],
         '%': [sprite('surprise'), solid(), 'coin-surprise'],
         '*': [sprite('surprise'), solid(), 'cogumelo-surprise'],
+        '~': [sprite('tubo-esquerdo'), solid(), 'tubo', scale(0.5)],
+        '(': [sprite('tubo-direito'), solid(), 'tubo', scale(0.5)],
+        ')': [sprite('tubo-esquerdo-reverse'), solid(), scale(0.5)],
+        '-': [sprite('tubo-direito-reverse'), solid(), scale(0.5)],
+        '+': [sprite('brick'), solid()],
+        '!': [sprite('blue-block'), solid(), scale(0.5)],
+        '/': [sprite('blue-brick'), solid(), scale(0.5)],
+        'z': [sprite('blue-steel'), solid(), scale(0.5)],
+        'x': [sprite('blue-goomba'), body(), 'dangerous', scale(0.5)],
     }
 
     const fase = addLevel(map, level_config)
